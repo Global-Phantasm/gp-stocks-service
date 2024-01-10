@@ -1,4 +1,4 @@
-package com.gp.pf.user.service.model;
+package com.gp.pf.stocks.service.model;
 
 import java.util.List;
 
@@ -10,15 +10,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document("portfolio_users")
+@Document("portfolio_stockss")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class User {
+public class Stocks {
 	@Id
 	private String id;
-	private String username;
+	private String stocksname;
 	private String firstName;
 	private String lastName;
 	private String email;

@@ -1,4 +1,4 @@
-package com.gp.pf.user.service.controller;
+package com.gp.pf.stocks.service.controller;
 
 import java.util.List;
 
@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gp.pf.user.service.UserService;
-import com.gp.pf.user.service.dto.UserRequest;
-import com.gp.pf.user.service.dto.UserResponse;
+import com.gp.pf.stocks.service.StocksService;
+import com.gp.pf.stocks.service.dto.StocksRequest;
+import com.gp.pf.stocks.service.dto.StocksResponse;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/stocks")
 @RequiredArgsConstructor
-public class UserController {
-	final private UserService userService;
+public class StocksController {
+	final private StocksService stocksService;
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createUser(@RequestBody UserRequest userRequest) {
-		userService.createUser(userRequest);
+	public void createStocks(@RequestBody StocksRequest stocksRequest) {
+		stocksService.createStocks(stocksRequest);
 	}
 	
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<UserResponse> getAllUser() {
-		return userService.getAllUser();
+	public List<StocksResponse> getAllStocks() {
+		return stocksService.getAllStocks();
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.gp.pf.user.service;
+package com.gp.pf.stocks.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gp.pf.user.service.dto.UserRequest;
-import com.gp.pf.user.service.repository.UserRepository;
+import com.gp.pf.stocks.service.dto.StocksRequest;
+import com.gp.pf.stocks.service.repository.StocksRepository;
 
 @SpringBootTest
 @Testcontainers
@@ -35,7 +35,7 @@ class ApplicationTests {
 
 	
 	@Autowired
-	UserRepository repository;
+	StocksRepository repository;
 	
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {
@@ -43,20 +43,20 @@ class ApplicationTests {
 	}
 
 	@Test
-	void shouldCreateUser() throws Exception {
-		UserRequest userRequest = getUserRequest();
+	void shouldCreateStocks() throws Exception {
+		StocksRequest stocksRequest = getStocksRequest();
 		int initialSize = repository.findAll().size();
-		String requestString = mapper.writeValueAsString(userRequest);
+		String requestString = mapper.writeValueAsString(stocksRequest);
 		mockMvc.perform(
-				MockMvcRequestBuilders.post("/api/user")
+				MockMvcRequestBuilders.post("/api/stocks")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestString)
 		);
 		Assertions.assertEquals(repository.findAll().size(),initialSize+1);
 	}
 
-	private UserRequest getUserRequest() {
-		return UserRequest.builder().username("dheerajkumar04")
+	private StocksRequest getStocksRequest() {
+		return StocksRequest.builder().stocksname("dheerajkumar04")
 				.firstName("Dheeraj")
 				.lastName("Kumar")
 				.address("Address is okay")

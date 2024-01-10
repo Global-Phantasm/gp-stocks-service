@@ -1,4 +1,4 @@
-package com.gp.pf.user.service.dto;
+package com.gp.pf.stocks.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
-	private String username;
+public class StocksRequest {
+	private String stocksname;
 	private String firstName;
 	private String lastName;
 	private String email;
